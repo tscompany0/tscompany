@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TS COMPANY | 퀵서비스 &amp; 물류 전문</title>
+
+  <style>
+    :root {
+      --bg-page: #f5f7fb;
+      --bg-page-soft: #eef2ff;
+      --bg-card: #ffffff;
+      --bg-card-soft: #f9fafb;
+      --border-soft: rgba(148, 163, 184, 0.35);
+      --border-strong: rgba(99, 102, 241, 0.55);
+      --text-main: #111827;
+      --text-sub: #4b5563;
+      --text-muted: #6b7280;
+      --accent-gold: #f59e0b;
+      --accent-gold-soft: #fef3c7;
+      --accent-blue: #2563eb;
+      --accent-indigo: #4f46e5;
+      --accent-emerald: #059669;
+      --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.10);
+      --radius-lg: 22px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        "Noto Sans KR", system-ui, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #e0f2fe 0, #eef2ff 40%, #f9fafb 100%);
+      color: var(--text-main);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+    }
+
+    .page-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.98),
+        rgba(255, 255, 255, 0.94)
+      );
+      border-bottom: 1px solid rgba(209, 213, 219, 0.8);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 20px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-image {
+      height: 34px;
+      display: block;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+
+    .nav-link {
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(191, 219, 254, 0.9);
+      color: #1e40af;
+    }
+
+    .nav-cta {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #f9fafb;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 10px 24px rgba(16, 185, 129, 0.45);
+    }
+
+    .nav-cta span {
+      font-size: 12px;
+      opacity: 0.92;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 34px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 4px 10px 4px 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(196, 181, 253, 0.8);
+      box-shadow: 0 8px 20px rgba(148, 163, 184, 0.45);
+      font-size: 13px;
+    }
+
+    .hero-kicker-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #facc15, #f97316 40%, #1d4ed8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #fefce8;
+    }
+
+    .hero-kicker-text {
+      letter-spacing: 0.03em;
+      color: var(--text-sub);
+    }
+
+    .hero-kicker-highlight {
+      font-weight: 700;
+      color: #4f46e5;
+    }
+
+    .hero-title {
+      font-size: 30px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #4f46e5, #2563eb);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-sub);
+    }
+
+    .hero-subtitle strong {
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      font-size: 13px;
+      color: var(--text-sub);
+      box-shadow: 0 8px 18px rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-tag-icon {
+      font-size: 15px;
+    }
+
+    .hero-tag strong {
+      color: #1d4ed8;
+    }
+
+    .hero-kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-kpi-card {
+      flex: 0 0 auto;
+      min-width: 155px;
+      padding: 10px 12px 10px;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-kpi-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .hero-kpi-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .hero-kpi-value span {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .hero-kpi-pill {
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #047857;
+      font-size: 12px;
+    }
+
+    .hero-kpi-pill strong {
+      color: #059669;
+    }
+
+    .hero-kpi-pill span {
+      color: #6b7280;
+    }
+
+    /* 1번: 문의하기/카카오 버튼 레이아웃 */
+
+    .hero-contact-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fef9c3, #e0f2fe);
+      border: 1px solid rgba(250, 204, 21, 0.7);
+      box-shadow: 0 12px 30px rgba(234, 179, 8, 0.45);
+    }
+
+    .hero-contact-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-contact-text {
+      font-size: 14px;
+      color: #78350f;
+    }
+
+    .hero-contact-text strong {
+      font-weight: 700;
+    }
+
+    .hero-contact-phone {
+      font-size: 18px;
+      font-weight: 800;
+      color: #b45309;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-contact-btn {
+      flex: 1 1 140px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #fb923c;
+      color: #fefce8;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 10px 26px rgba(248, 113, 113, 0.45);
+      cursor: pointer;
+    }
+
+    .hero-contact-btn.secondary {
+      background: #22c55e;
+      box-shadow: 0 10px 26px rgba(34, 197, 94, 0.45);
+    }
+
+    .hero-contact-btn span {
+      font-size: 16px;
+    }
+
+    .hero-contact-note {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #92400e;
+    }
+
+    /* HERO VISUAL */
+
+    .hero-visual-card {
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      background: linear-gradient(135deg, #fef6e4, #e0f2fe);
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      box-shadow: 0 20px 40px rgba(148, 163, 184, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-visual-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+    }
+
+    /* SECTION COMMON */
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .section-tag {
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      color: #4338ca;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 16px;
+    }
+
+    .card-panel {
+      border-radius: var(--radius-lg);
+      padding: 16px 18px 16px;
+      background: var(--bg-card);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-header-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-header-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .card-header-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #ecfeff;
+      border: 1px solid #a5f3fc;
+      font-size: 12px;
+      color: #0e7490;
+    }
+
+    .card-body-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-sub);
+    }
+
+    .card-body-text strong {
+      color: #1d4ed8;
+    }
+
+    .pill-list {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill-tag {
+      font-size: 13px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      color: var(--text-sub);
+    }
+
+    .pill-tag.alt {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+
+    .stat-grid {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat-item {
+      padding: 10px 10px;
+      border-radius: 12px;
+      background: #f9fafb;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .stat-item strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+      color: #111827;
+    }
+
+    .extra-benefit-grid {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .extra-benefit {
+      border-radius: 12px;
+      padding: 9px 10px 8px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      font-size: 13px;
+      color: #4338ca;
+    }
+
+    .extra-benefit strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #1d4ed8;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 20px;
+    }
+
+    .about-main-text {
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--text-sub);
+    }
+
+    .about-main-text strong {
+      color: #1d4ed8;
+    }
+
+    /* 3번: 운영 철학 카드 리디자인 */
+
+    .about-highlight-box {
+      position: relative;
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background: linear-gradient(135deg, #fff7e0, #fefce8);
+      border: 1px solid rgba(250, 204, 21, 0.65);
+      box-shadow: 0 16px 36px rgba(251, 191, 36, 0.45);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .about-highlight-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 8px;
+    }
+
+    .about-highlight-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .about-highlight-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 4px;
+      color: #92400e;
+    }
+
+    .about-highlight-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: #f97316;
+      font-weight: 700;
+    }
+
+    /* SERVICES GRID */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .service-card {
+      border-radius: 14px;
+      padding: 12px 12px 10px;
+      background: #ffffff;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .service-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #b45309;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .service-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .service-tag {
+      font-size: 12px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      color: var(--text-sub);
+    }
+
+    /* STRENGTHS */
+
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .strength {
+      background-color: #f9fafb;
+      border-radius: 14px;
+      padding: 13px 13px 11px;
+      font-size: 13px;
+      border: 1px solid var(--border-soft);
+      color: var(--text-sub);
+    }
+
+    .strength-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--accent-indigo);
+    }
+
+    /* FLEET & AREA */
+
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .fleet-card {
+      border-radius: 12px;
+      padding: 10px 10px 9px;
+      background: #ffffff;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      color: var(--text-sub);
+      font-size: 13px;
+    }
+
+    .fleet-title {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .fleet-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .fleet-tag {
+      font-size: 12px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      color: var(--text-sub);
+    }
+
+    .fleet-note {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .region-card {
+      border-radius: 12px;
+      padding: 10px 10px 9px;
+      background: #ffffff;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      color: var(--text-sub);
+      font-size: 13px;
+    }
+
+    .region-title {
+      font-size: 14px;
+      margin-bottom: 3px;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .region-desc {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .region-tag-row {
+      margin-top: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .region-tag {
+      font-size: 12px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      color: var(--text-sub);
+    }
+
+    /* VEHICLE SPEC GRID */
+
+    .vehicle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .vehicle-card {
+      background: #ffffff;
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .vehicle-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .vehicle-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 6px 0 10px 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--accent-indigo);
+      color: #111827;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .spec-table td {
+      border: 1px solid var(--border-soft);
+      padding: 6px;
+      font-size: 13px;
+    }
+
+    .spec-table td:first-child {
+      background: #f9fafb;
+      font-weight: 600;
+      width: 80px;
+    }
+
+    /* CONTACT & TRUST */
+
+    .contact-section {
+      margin-top: 34px;
+    }
+
+    .contact-center-card {
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      background: linear-gradient(135deg, #fef3c7, #e0f2fe);
+      border: 1px solid rgba(251, 191, 36, 0.7);
+      box-shadow: 0 20px 44px rgba(234, 179, 8, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 520px;
+      font-size: 14px;
+    }
+
+    .contact-center-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #92400e;
+    }
+
+    .contact-center-desc {
+      font-size: 14px;
+      color: #92400e;
+      line-height: 1.7;
+    }
+
+    .contact-center-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 4px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #f97316, #facc15);
+      color: #1f2933;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 14px 32px rgba(249, 115, 22, 0.55);
+    }
+
+    .contact-center-btn span {
+      font-size: 16px;
+    }
+
+    .contact-center-sub {
+      font-size: 13px;
+      color: #b45309;
+    }
+
+    /* 5번: 신뢰도 섹션 (새로운 창작 컨텐츠) */
+
+    .trust-section {
+      margin-top: 34px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .trust-card {
+      border-radius: 16px;
+      padding: 14px 14px 13px;
+      background: #ffffff;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow: 0 14px 38px rgba(148, 163, 184, 0.35);
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .trust-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #1d4ed8;
+    }
+
+    .trust-highlight {
+      font-size: 24px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .trust-note {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 30px;
+      border-top: 1px solid rgba(209, 213, 219, 0.9);
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-company {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .footer-company-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .footer-label {
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    .footer-contact {
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .footer-contact span {
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .two-column {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .strengths-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .fleet-grid,
+      .region-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .extra-benefit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-contact {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding: 8px 16px 6px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .page-inner {
+        padding: 0 16px 50px;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .hero-subtitle {
+        font-size: 14px;
+      }
+
+      .service-grid,
+      .strengths-grid,
+      .fleet-grid,
+      .region-grid,
+      .trust-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .vehicle-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-inner {
+        padding: 10px 16px 18px;
+      }
+
+      .hero-contact-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-contact-phone {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <div class="header-inner">
+        <div class="logo-area">
+          <!-- 2번: 새 로고 이미지 (파일명은 tscompanylogo.jpg 로 가정) -->
+          <img src="tscompanylogo.jpg" alt="TS COMPANY 로고" class="logo-image" />
+          <div class="logo-sub">QUICK SERVICE &amp; LOGISTICS</div>
+        </div>
+        <nav class="nav-menu">
+          <a href="#about" class="nav-link">회사소개</a>
+          <a href="#service" class="nav-link">서비스 안내</a>
+          <a href="#strengths" class="nav-link">TS 강점</a>
+          <a href="#fleet-area" class="nav-link">차량·배송 범위</a>
+          <a href="#vehicles" class="nav-link">차량 스펙</a>
+          <a href="#contact" class="nav-link">문의하기</a>
+          <div class="nav-cta">
+            <span>대표번호</span>
+            <strong>010-9707-1541</strong>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-inner">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-main">
+            <div class="hero-kicker">
+              <div class="hero-kicker-badge">●</div>
+              <div class="hero-kicker-text">
+                <span class="hero-kicker-highlight">TS COMPANY 퀵서비스·물류</span>
+                &nbsp;지금 출발하면 언제까지 도착할 수 있을까?
+              </div>
+            </div>
+
+            <h1 class="hero-title">
+              수도권 전역, 새벽·야간까지<br />
+              <span>당일 도착 퀵서비스 &amp; 화물 운송</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              한 번의 문의로 <strong>시간·비용·안전</strong>을 모두 고려한 최적의 운송 방안을 설계해 드립니다.<br />
+              제조업·도소매·스타트업·개인사업자까지, <strong>긴급 서류부터 설비·자재·제품 출고</strong>까지 TS COMPANY가 책임지고 배송합니다.
+            </p>
+
+            <div class="hero-highlights">
+              <div class="hero-tag">
+                <span class="hero-tag-icon">📦</span>
+                <span><strong>당일 접수</strong> · 수도권 직행 운송</span>
+              </div>
+              <div class="hero-tag">
+                <span class="hero-tag-icon">🌙</span>
+                <span>새벽·야간 배송 <strong>상시 대응</strong></span>
+              </div>
+              <div class="hero-tag">
+                <span class="hero-tag-icon">🛠️</span>
+                <span>제조업·설비·부품 <strong>정기 출고</strong> 가능</span>
+              </div>
+              <div class="hero-tag">
+                <span class="hero-tag-icon">🚚</span>
+                <span>1톤~라보까지 <strong>맞춤 차량 배차</strong></span>
+              </div>
+            </div>
+
+            <div class="hero-kpi-row">
+              <div class="hero-kpi-card">
+                <div class="hero-kpi-label">수도권 당일 운송</div>
+                <div class="hero-kpi-value">
+                  1~3시간 이내 도착
+                  <span>교통·물량 상황에 따라 상이</span>
+                </div>
+                <div class="hero-kpi-pill">
+                  <strong>※</strong><span>상세 시간은 문의 시 안내</span>
+                </div>
+              </div>
+              <div class="hero-kpi-card">
+                <div class="hero-kpi-label">주요 고객군</div>
+                <div class="hero-kpi-value">
+                  제조·도소매
+                  <span>스타트업 · 개인사업자</span>
+                </div>
+                <div class="hero-kpi-pill">
+                  <strong>#긴급출고</strong><span>#정기배송</span>
+                </div>
+              </div>
+              <div class="hero-kpi-card">
+                <div class="hero-kpi-label">운영 시간</div>
+                <div class="hero-kpi-value">
+                  24H
+                  <span>사전 예약 시</span>
+                </div>
+                <div class="hero-kpi-pill">
+                  <strong>주간·야간·새벽</strong><span>전담 배차</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1번: 문의/카카오 버튼 박스 -->
+            <div class="hero-contact-box">
+              <div class="hero-contact-top">
+                <div class="hero-contact-text">
+                  <strong>전화 상담이 편하신가요?</strong><br />
+                  담당자와 바로 통화하실 수 있는 대표번호입니다.
+                </div>
+                <div class="hero-contact-phone">010-9707-1541</div>
+              </div>
+              <div class="hero-contact-buttons">
+                <a href="tel:01097071541" class="hero-contact-btn">
+                  <span>📞</span> 대표번호로 바로 전화하기
+                </a>
+                <a href="#" class="hero-contact-btn secondary">
+                  <span>💬</span> 카카오톡으로 상담 요청하기
+                </a>
+              </div>
+              <div class="hero-contact-note">
+                출발지·도착지·화물 종류·희망 시간만 알려주시면
+                도착 가능 시간과 예상 요금, 적합 차량을 안내해 드립니다.
+              </div>
+            </div>
+          </div>
+
+          <!-- 오른쪽: AI 자동배차 이미지 -->
+          <aside class="hero-visual-card">
+            <div class="hero-visual-image">
+              <!-- 셀이 제공한 AI 자동배차 이미지를 ts-ai-banner.jpg 라는 이름으로 저장해 사용 -->
+              <img src="ts-ai-banner.jpg" alt="TS COMPANY AI 자동 배차 시스템 소개 이미지" />
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">ABOUT</div>
+            <h2 class="section-title">회사소개</h2>
+            <p class="section-desc">
+              TS COMPANY는 기업 전용 퀵서비스·물류에 집중하는 실무형 운송 파트너입니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-main-text">
+            TS COMPANY는 <strong>신뢰 가능한 배차 시스템</strong>과
+            <strong>검증된 기사 네트워크</strong>를 기반으로,<br />
+            기업 고객의 일상적인 배송부터 갑작스러운 긴급 특송까지 함께하는
+            <strong>전문 운송 파트너</strong>입니다.<br /><br />
+
+            단순히 “배송 완료”에서 끝나는 것이 아니라,<br />
+            담당자분들이 업무 중간에 여러 번 확인 전화를 하지 않도록<br />
+            <strong>진행 상황 공유와 사전 안내</strong>에 특히 신경 쓰고 있습니다.<br /><br />
+
+            수도권 및 주요 권역을 중심으로,<br />
+            문서·샘플·상품·부품·장비 등 다양한 품목을<br />
+            운송 목적과 긴급도에 맞는 차량으로 안전하게 운송합니다.
+          </div>
+
+          <!-- 3번: 운영 철학 박스 -->
+          <div class="about-highlight-box">
+            <div class="about-highlight-title">TS COMPANY의 운영 철학</div>
+            <ul class="about-highlight-list">
+              <li>“내가 쓰는 서비스라면”을 기준으로 동선·단가를 검토합니다.</li>
+              <li>기사님과 고객 모두가 안전한 운행을 최우선으로 합니다.</li>
+              <li>단발성 거래보다 <strong>장기 거래</strong>를 염두에 두고 제안합니다.</li>
+              <li>오늘도 “무사히 잘 도착했습니다”라는 말을 듣기 위해 운행합니다.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICE DETAIL -->
+      <section id="service" class="section">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">SERVICE</div>
+            <h2 class="section-title">TS COMPANY 퀵서비스 &amp; 물류 서비스</h2>
+            <p class="section-desc">
+              “지금 맡기면 언제까지 도착할 수 있을까?” – 출고·납품·이동이 필요할 때, 한 번의 문의로 최적의 운송 방안을 제안드립니다.
+            </p>
+          </div>
+          <div class="section-tag">제조업·도소매·온라인몰·스타트업·개인사업자 전용</div>
+        </div>
+
+        <div class="two-column">
+          <!-- 4번: 여백/폰트 정리된 당일·긴급 퀵서비스 -->
+          <div class="card-panel">
+            <div class="card-header-row">
+              <div>
+                <div class="card-header-title">01. 당일·긴급 퀵서비스</div>
+                <div class="card-header-sub">
+                  출발지와 도착지를 기준으로, 가장 빠르고 안전한 동선 및 차량을 배차합니다.
+                </div>
+              </div>
+              <div class="card-header-badge">서울·경기권 중심</div>
+            </div>
+
+            <div class="card-body-text">
+              <strong>“지금 바로 보내야 하는데, 마땅한 차량이 없다면”</strong><br />
+              전화 한 통으로 <strong>출발지·도착지·화물 종류·예상 시간</strong>만 알려주세요.<br />
+              TS COMPANY가 <strong>도착 가능 시간·예상 요금·차량 종류</strong>를 빠르게 안내드립니다.
+            </div>
+
+            <div class="pill-list">
+              <span class="pill-tag">📦 긴급 서류·계약서·샘플</span>
+              <span class="pill-tag">🏭 공장·창고·물류센터 간 이동</span>
+              <span class="pill-tag">🏬 도매·소매점 간 재고 보충</span>
+              <span class="pill-tag">🚚 당일 출고·당일 도착 요청</span>
+              <span class="pill-tag alt">🌙 야간·새벽 긴급 배송</span>
+            </div>
+
+            <div class="stat-grid">
+              <div class="stat-item">
+                <strong>수도권 직행 운송</strong>
+                서울·경기 중심, 주요 산업단지·도심권까지 직행 운송을 지원합니다.
+              </div>
+              <div class="stat-item">
+                <strong>시간대 지정 배송</strong>
+                입·출고 시간, 현장 상황에 맞춰
+                도착 시간을 사전에 조율합니다.
+              </div>
+              <div class="stat-item">
+                <strong>실시간 소통</strong>
+                배차·픽업·도착 상황을 담당자와 수시로 공유하여
+                업무 공백을 줄여 드립니다.
+              </div>
+            </div>
+
+            <div class="extra-benefit-grid">
+              <div class="extra-benefit">
+                <strong>업무 공백 최소화</strong>
+                설비 고장·재고 부족 등 생산·판매에 영향을 주는 상황에서
+                다운타임을 줄이는 데 초점을 맞춥니다.
+              </div>
+              <div class="extra-benefit">
+                <strong>동선·비용 최적화</strong>
+                기존 이용 노선을 함께 검토하여 불필요한 회전·대기를 줄이고
+                보다 합리적인 운송 패턴을 제안합니다.
+              </div>
+              <div class="extra-benefit">
+                <strong>장기 파트너십 지향</strong>
+                단발성 운송이 아니라 월·분기 단위 정기 운송까지 염두에 두고
+                장기 관점에서 운송 구조를 설계합니다.
+              </div>
+            </div>
+          </div>
+
+          <!-- 오른쪽: 서비스 유형 카드 -->
+          <div class="card-panel">
+            <div class="card-header-row" style="margin-bottom:10px;">
+              <div>
+                <div class="card-header-title">주요 서비스 유형</div>
+                <div class="card-header-sub">
+                  필요한 시점·물량·동선에 맞게, 퀵부터 화물까지 한 번에 설계합니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="service-grid">
+              <div class="service-card">
+                <div class="service-title">기업 정기 배송</div>
+                <div class="service-desc">
+                  본사–지점, 창고–매장 간 반복되는 출고·회수 업무를
+                  <strong>정기 노선</strong>으로 설계해 안정적인 물류 패턴을 만들어 드립니다.
+                </div>
+                <div class="service-tag-row">
+                  <span class="service-tag">월 단위 계약</span>
+                  <span class="service-tag">고정 노선 설계</span>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-title">행사·프로모션 물류</div>
+                <div class="service-desc">
+                  전시·팝업스토어·프로모션 등 행사 일정에 맞춰
+                  집하–배송–철수까지 <strong>원스톱</strong>으로 지원합니다.
+                </div>
+                <div class="service-tag-row">
+                  <span class="service-tag">일정 연동</span>
+                  <span class="service-tag">현장 사전 협의</span>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-title">부품·장비 긴급 특송</div>
+                <div class="service-desc">
+                  생산 설비·IT 장비·AS 부품 등
+                  중단 시 비용이 큰 현장에 <strong>신속 특송</strong>을 지원합니다.
+                </div>
+                <div class="service-tag-row">
+                  <span class="service-tag">야간/주말 협의</span>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-title">맞춤형 전용 차량</div>
+                <div class="service-desc">
+                  특정 시간대·구간에만 필요한 전용 차량,
+                  특정 고객만을 위한 전담 차량 등 <strong>전용 배차</strong> 체계를 설계합니다.
+                </div>
+                <div class="service-tag-row">
+                  <span class="service-tag">전담 기사 배정</span>
+                  <span class="service-tag">장기 계약 가능</span>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-title">기존 물류 패턴 점검</div>
+                <div class="service-desc">
+                  현재 이용 중인 운송 패턴을 분석하여
+                  <strong>동선·비용·시간</strong>을 재정비하고,
+                  기업 상황에 맞는 운영 방안을 제안합니다.
+                </div>
+                <div class="service-tag-row">
+                  <span class="service-tag">비교 견적</span>
+                  <span class="service-tag">재설계 컨설팅</span>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-title">기타 맞춤 요청</div>
+                <div class="service-desc">
+                  조건이 애매하거나 복잡하더라도
+                  우선 상황만 설명해 주시면 함께 방법을 찾겠습니다.
+                </div>
+                <div class="service-tag-row">
+                  <span class="service-tag">조건 정리부터 함께</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STRENGTHS -->
+      <section id="strengths" class="section">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">WHY TS</div>
+            <h2 class="section-title">TS COMPANY가 선택받는 이유</h2>
+            <p class="section-desc">
+              단순 ‘배달’이 아닌, 기업 업무의 연장선에서 물류를 바라봅니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="strengths-grid">
+          <div class="strength">
+            <div class="strength-title">01. 기업 중심 설계</div>
+            <div>
+              담당자 입장에서 불편한 지점을 먼저 듣고,<br />
+              노선·시간·차량을 다시 설계해 드립니다.
+            </div>
+          </div>
+
+          <div class="strength">
+            <div class="strength-title">02. 안정적인 기사 네트워크</div>
+            <div>
+              기본 교육과 검증을 거친 기사님들과만 협업하며,<br />
+              장기적인 파트너십을 전제로 함께합니다.
+            </div>
+          </div>
+
+          <div class="strength">
+            <div class="strength-title">03. 즉각 응답 &amp; 상황 공유</div>
+            <div>
+              배차·출발·도착 등 주요 진행 상황을<br />
+              빠르게 공유하여 업무 불안을 줄여 드립니다.
+            </div>
+          </div>
+
+          <div class="strength">
+            <div class="strength-title">04. 합리적인 단가 정책</div>
+            <div>
+              단기 비용보다 <strong>꾸준한 거래</strong>를 기준으로,<br />
+              납득 가능한 단가 체계를 제안합니다.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLEET & AREA -->
+      <section id="fleet-area" class="section">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">FLEET &amp; AREA</div>
+            <h2 class="section-title">운행 차량 · 배송 가능 범위</h2>
+            <p class="section-desc">
+              화물 특성·물량·동선에 따라 적절한 차량을 배차해 드립니다. 차량 선택이 어려우시면 우선 문의만 주셔도 괜찮습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="two-column">
+          <div class="card-panel">
+            <div class="card-header-row">
+              <div>
+                <div class="card-header-title">주요 차량 유형</div>
+                <div class="card-header-sub">
+                  화물 특성과 거리, 긴급도를 고려해 적합한 차량을 배정합니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="fleet-grid">
+              <div class="fleet-card">
+                <div class="fleet-title">오토바이 퀵</div>
+                <div class="fleet-tag-row">
+                  <span class="fleet-tag">문서·서류</span>
+                  <span class="fleet-tag">소형 박스</span>
+                  <span class="fleet-tag">도심 긴급 업무</span>
+                </div>
+                <div class="fleet-note">
+                  짧은 거리·긴급성이 높은 업무에 적합하며,
+                  교통 상황을 고려한 빠른 대응이 가능합니다.
+                </div>
+              </div>
+
+              <div class="fleet-card">
+                <div class="fleet-title">다마스 / 라보</div>
+                <div class="fleet-tag-row">
+                  <span class="fleet-tag">샘플·상품</span>
+                  <span class="fleet-tag">소형 박스 다량</span>
+                  <span class="fleet-tag">소규모 출고</span>
+                </div>
+                <div class="fleet-note">
+                  승용차로는 처리하기 어려운 소량·다빈도 물량에 적합합니다.
+                </div>
+              </div>
+
+              <div class="fleet-card">
+                <div class="fleet-title">1톤 화물 (카고/탑)</div>
+                <div class="fleet-tag-row">
+                  <span class="fleet-tag">중량 화물</span>
+                  <span class="fleet-tag">창고–매장 운송</span>
+                  <span class="fleet-tag">정기 노선</span>
+                </div>
+                <div class="fleet-note">
+                  부피·중량이 있는 화물, 정기적인 출고·입고 업무에 활용됩니다.
+                </div>
+              </div>
+
+              <div class="fleet-card">
+                <div class="fleet-title">1.4~3.5톤 화물</div>
+                <div class="fleet-tag-row">
+                  <span class="fleet-tag">파레트 화물</span>
+                  <span class="fleet-tag">중소 규모 출고</span>
+                  <span class="fleet-tag">중·단거리 운송</span>
+                </div>
+                <div class="fleet-note">
+                  1.4톤~3.5톤급은 소형~중형 화물차로,
+                  소규모 물량부터 파레트 화물까지 도심·근거리 운송에 널리 사용됩니다.
+                </div>
+              </div>
+
+              <div class="fleet-card">
+                <div class="fleet-title">5~11톤 화물</div>
+                <div class="fleet-tag-row">
+                  <span class="fleet-tag">중대형 화물</span>
+                  <span class="fleet-tag">공장 간 자재 이동</span>
+                  <span class="fleet-tag">장거리 운송</span>
+                </div>
+                <div class="fleet-note">
+                  5톤~11톤급 중형 화물차는
+                  한 번에 많은 물량을 운반해야 하는
+                  공장·도매시장·건설 현장 운송에 적합합니다.
+                </div>
+              </div>
+
+              <div class="fleet-card">
+                <div class="fleet-title">25톤 트레일러</div>
+                <div class="fleet-tag-row">
+                  <span class="fleet-tag">대형·중량 화물</span>
+                  <span class="fleet-tag">대량 일괄 운송</span>
+                  <span class="fleet-tag">장거리 특화</span>
+                </div>
+                <div class="fleet-note">
+                  대량 출고·수입 화물 등
+                  수십 톤 단위의 중량·대형 화물을 한 번에 운송할 때 사용됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-panel">
+            <div class="card-header-row">
+              <div>
+                <div class="card-header-title">배송 가능 지역</div>
+                <div class="card-header-sub">
+                  수도권 전역 중심으로, 요청에 따라 타 지역도 협의 가능합니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="region-grid">
+              <div class="region-card">
+                <div class="region-title">서울 전역</div>
+                <div class="region-desc">
+                  도심·사무실·상가·공공기관 등, 출·퇴근 시간 교통 상황을 고려한 운송 동선을 설계합니다.
+                </div>
+                <div class="region-tag-row">
+                  <span class="region-tag">주요 상권·오피스</span>
+                  <span class="region-tag">공장지대·창고</span>
+                </div>
+              </div>
+
+              <div class="region-card">
+                <div class="region-title">경기 북부</div>
+                <div class="region-desc">
+                  의정부·남양주·구리·파주·고양 등 산업단지·물류단지가 위치한 지역 중심 운행.
+                </div>
+                <div class="region-tag-row">
+                  <span class="region-tag">산업단지</span>
+                  <span class="region-tag">물류센터</span>
+                </div>
+              </div>
+
+              <div class="region-card">
+                <div class="region-title">경기 남부</div>
+                <div class="region-desc">
+                  수원·용인·화성·평택 등 제조·물류 거점 지역 운행 경험을 바탕으로 동선 설계.
+                </div>
+                <div class="region-tag-row">
+                  <span class="region-tag">공장·연구소</span>
+                  <span class="region-tag">항만·터미널 인근</span>
+                </div>
+              </div>
+
+              <div class="region-card">
+                <div class="region-title">야간·새벽 운송</div>
+                <div class="region-desc">
+                  공장 가동·출고 시간, 현장 작업 시간을 고려하여 야간·새벽 운송도 협의 가능합니다.
+                </div>
+                <div class="region-tag-row">
+                  <span class="region-tag">공장 야간 출고</span>
+                  <span class="region-tag">새벽 납품</span>
+                </div>
+              </div>
+
+              <div class="region-card">
+                <div class="region-title">타 지역 협의</div>
+                <div class="region-desc">
+                  출발·도착지가 수도권 외 지역인 경우에도, 가능 여부를 함께 검토해 드립니다.
+                </div>
+                <div class="region-tag-row">
+                  <span class="region-tag">사전 협의 필수</span>
+                </div>
+              </div>
+
+              <div class="region-card">
+                <div class="region-title">기타 문의</div>
+                <div class="region-desc">
+                  차량·지역·시간대 등 조건이 애매하시면, 우선 상황만 설명해 주셔도 괜찮습니다.
+                </div>
+                <div class="region-tag-row">
+                  <span class="region-tag">조건 정리부터 함께</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VEHICLE SPEC -->
+      <section id="vehicles" class="section">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">VEHICLE SPEC</div>
+            <h2 class="section-title">차량 스펙 안내</h2>
+            <p class="section-desc">
+              배차에 활용되는 주요 차량의 대략적인 규격과 적재 가능 중량입니다. (실제 차량 상태에 따라 일부 차이는 있을 수 있습니다.)
+            </p>
+          </div>
+        </div>
+
+        <div class="vehicle-grid">
+          <!-- 1. 오토바이 -->
+          <div class="vehicle-card">
+            <img src="bike.jpg" alt="오토바이" />
+            <div class="vehicle-title">오토바이</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>-</td></tr>
+              <tr><td>폭</td><td>-</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>20kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 2. 라보 -->
+          <div class="vehicle-card">
+            <img src="labo.jpg" alt="라보" />
+            <div class="vehicle-title">라보</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>2,200mm</td></tr>
+              <tr><td>폭</td><td>1,400mm</td></tr>
+              <tr><td>높이</td><td>1,500mm</td></tr>
+              <tr><td>적재량</td><td>500kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 3. 다마스 -->
+          <div class="vehicle-card">
+            <img src="damas.jpg" alt="다마스" />
+            <div class="vehicle-title">다마스</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>1,600mm</td></tr>
+              <tr><td>폭</td><td>1,100mm</td></tr>
+              <tr><td>높이</td><td>1,100mm</td></tr>
+              <tr><td>적재량</td><td>400kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 4. 1톤 카고 -->
+          <div class="vehicle-card">
+            <img src="1ton.jpg" alt="1톤 카고" />
+            <div class="vehicle-title">1톤 카고</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>2,850mm</td></tr>
+              <tr><td>폭</td><td>1,600mm</td></tr>
+              <tr><td>높이</td><td>1,700mm</td></tr>
+              <tr><td>적재량</td><td>1,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 5. 1톤 탑/윙바디 -->
+          <div class="vehicle-card">
+            <img src="1ton top.jpg" alt="1톤 탑/윙바디" />
+            <div class="vehicle-title">1톤 탑/윙바디</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>2,850mm</td></tr>
+              <tr><td>폭</td><td>1,600mm</td></tr>
+              <tr><td>높이</td><td>1,700mm</td></tr>
+              <tr><td>적재량</td><td>1,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 6. 1.4톤 카고 -->
+          <div class="vehicle-card">
+            <img src="1.4 ton.jpg" alt="1.4톤 카고" />
+            <div class="vehicle-title">1.4톤 카고</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>3,100mm</td></tr>
+              <tr><td>폭</td><td>1,700mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>2,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 7. 1.4톤 탑/윙바디 -->
+          <div class="vehicle-card">
+            <img src="1.4ton top.jpg" alt="1.4톤 탑/윙바디" />
+            <div class="vehicle-title">1.4톤 탑/윙바디</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>3,100mm</td></tr>
+              <tr><td>폭</td><td>1,700mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>2,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 8. 2.5톤 카고 -->
+          <div class="vehicle-card">
+            <img src="2.5ton.jpg" alt="2.5톤 카고" />
+            <div class="vehicle-title">2.5톤 카고</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>4,300mm</td></tr>
+              <tr><td>폭</td><td>1,800mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>3,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 9. 2.5톤 탑/윙바디 -->
+          <div class="vehicle-card">
+            <img src="2.5ton top.jpg" alt="2.5톤 탑/윙바디" />
+            <div class="vehicle-title">2.5톤 탑/윙바디</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>4,300mm</td></tr>
+              <tr><td>폭</td><td>1,800mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>3,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 10. 5톤 카고 -->
+          <div class="vehicle-card">
+            <img src="5ton.jpg" alt="5톤 카고" />
+            <div class="vehicle-title">5톤 카고</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>6,200mm</td></tr>
+              <tr><td>폭</td><td>2,300mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>5,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 11. 5톤 탑/윙바디 -->
+          <div class="vehicle-card">
+            <img src="5ton top.jpg" alt="5톤 탑/윙바디" />
+            <div class="vehicle-title">5톤 탑/윙바디</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>6,200mm</td></tr>
+              <tr><td>폭</td><td>2,300mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>5,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 12. 11톤 카고 -->
+          <div class="vehicle-card">
+            <img src="11ton.jpg" alt="11톤 카고" />
+            <div class="vehicle-title">11톤 카고</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>7,300mm</td></tr>
+              <tr><td>폭</td><td>2,350mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>11,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 13. 11톤 탑/윙바디 -->
+          <div class="vehicle-card">
+            <img src="11ton top.jpg" alt="11톤 탑/윙바디" />
+            <div class="vehicle-title">11톤 탑/윙바디</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>7,300mm</td></tr>
+              <tr><td>폭</td><td>2,350mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>11,000kg</td></tr>
+            </table>
+          </div>
+
+          <!-- 14. 25톤 트레일러 -->
+          <div class="vehicle-card">
+            <img src="25ton.jpg" alt="25톤 트레일러" />
+            <div class="vehicle-title">25톤 트레일러</div>
+            <table class="spec-table">
+              <tr><td>길이</td><td>12,000mm</td></tr>
+              <tr><td>폭</td><td>2,400mm</td></tr>
+              <tr><td>높이</td><td>-</td></tr>
+              <tr><td>적재량</td><td>25,000kg</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section contact-section">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">CONTACT</div>
+            <h2 class="section-title">문의하기</h2>
+          </div>
+        </div>
+
+        <div class="contact-center-card">
+          <div class="contact-center-title">TS COMPANY 고객센터로 바로 연결</div>
+          <div class="contact-center-desc">
+            아래 버튼을 누르시면 TS COMPANY 고객센터로 연결됩니다.<br />
+            <strong>운송 가능 여부, 예상 요금, 출발 가능 시간</strong>을 빠르게 안내해 드립니다.
+          </div>
+
+          <a href="tel:01097071541" class="contact-center-btn">
+            <span>📞</span>
+            TS COMPANY 고객센터 연결하기
+          </a>
+
+          <div class="contact-center-sub">
+            통화가 어려우신 경우, 문자나 카카오톡으로 운송 요청 내용을 남겨주셔도 됩니다.
+          </div>
+        </div>
+      </section>
+
+      <!-- 5번: 신뢰도 섹션 -->
+      <section class="trust-section">
+        <div class="section-header">
+          <div class="section-title-block">
+            <div class="section-kicker">TRUST</div>
+            <h2 class="section-title">TS COMPANY와 함께하면 안심할 수 있는 이유</h2>
+            <p class="section-desc">
+              운송 품질과 안전, 책임 있는 응대로 신뢰를 쌓아가고 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-card">
+            <div class="trust-title">기업·사업자 전용 운송 파트너</div>
+            <div class="trust-highlight">B2B</div>
+            <div>
+              업무용 물류를 이해하는 전담 배차팀이
+              출고·납품·재고 이동 등 기업 일정을 기준으로
+              운송 계획을 함께 세워 드립니다.
+            </div>
+            <div class="trust-note">
+              반복되는 업무일수록 차이가 크게 느껴집니다.
+            </div>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-title">법규 준수 &amp; 안전 운행</div>
+            <div class="trust-highlight">SAFE</div>
+            <div>
+              적재 기준·운행 시간 등 기본 원칙을 지키며,
+              무리한 과속·과적 운행을 지양합니다.
+              안전이 곧 기업의 리스크 관리라고 생각합니다.
+            </div>
+            <div class="trust-note">
+              사람과 화물이 모두 안전하게 도착하는 것을 최우선으로 합니다.
+            </div>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-title">책임 있는 사후 응대</div>
+            <div class="trust-highlight">CARE</div>
+            <div>
+              일정 변경·현장 변수 등 예기치 못한 상황에서도
+              담당자와 긴밀히 소통하며 대안을 찾습니다.
+              “이 정도면 믿고 맡길 수 있다”는 평가를 목표로 합니다.
+            </div>
+            <div class="trust-note">
+              일회성이 아닌, 계속 함께 일하고 싶은 파트너가 되겠습니다.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 6번 & 7번: 사업자 정보 실 데이터 반영 -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-company">
+        <div class="footer-company-title">TS COMPANY 퀵서비스 &amp; 물류 · 사업자 정보</div>
+        <div><span class="footer-label">사업자명</span> : TS COMPANY</div>
+        <div><span class="footer-label">대표자명</span> : 이재원</div>
+        <div><span class="footer-label">주소</span> : 경기도 성남시 중원구 희망로 366번길 3</div>
+        <div><span class="footer-label">대표번호</span> : 010-9707-1541</div>
+        <div><span class="footer-label">주선면허번호</span> : __________________________</div>
+      </div>
+
+      <div class="footer-contact">
+        <span>※ 주선면허번호 등 상세 정보는 실제 사업자 정보에 맞게 수정하여 사용해 주세요.</span><br />
+        <span>© TS COMPANY. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
