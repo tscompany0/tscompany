@@ -262,7 +262,7 @@
             padding: 28px 24px;
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
             justify-content: space-between;
         }
@@ -270,6 +270,7 @@
         .contact-text {
             font-size: 14px;
             line-height: 1.9;
+            max-width: 340px;
         }
 
         .contact-strong {
@@ -280,8 +281,9 @@
 
         .contact-actions {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1 1 280px;
         }
 
         .contact-btn {
@@ -318,6 +320,103 @@
             font-size: 13px;
             margin-top: 6px;
             opacity: 0.9;
+        }
+
+        /* 견적 요청 폼 (문의하기 내부) */
+        .quote-form {
+            background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000000 100%);
+            border-radius: 16px;
+            padding: 18px 18px 16px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.8);
+            color: #e5e7eb;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .quote-header {
+            margin-bottom: 12px;
+        }
+
+        .quote-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .quote-subtitle {
+            font-size: 12px;
+            color: #cbd5f5;
+        }
+
+        .quote-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 10px;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+        .quote-field {
+            flex: 1 1 calc(50% - 6px);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 11px;
+        }
+
+        .quote-field.full {
+            flex-basis: 100%;
+        }
+
+        .quote-field label {
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        .quote-field input,
+        .quote-field textarea {
+            width: 100%;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            background-color: rgba(15, 23, 42, 0.85);
+            color: #f9fafb;
+            padding: 7px 11px;
+            font-size: 11px;
+            outline: none;
+        }
+
+        .quote-field textarea {
+            border-radius: 10px;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .quote-field input::placeholder,
+        .quote-field textarea::placeholder {
+            color: #6b7280;
+        }
+
+        .quote-notice {
+            font-size: 10px;
+            color: #9ca3af;
+            margin: 2px 1px 8px;
+        }
+
+        .quote-submit {
+            width: 100%;
+            border: none;
+            border-radius: 999px;
+            padding: 9px 0;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+            color: #f9fafb;
+        }
+
+        .quote-submit:hover {
+            opacity: 0.92;
         }
 
         /* 푸터 */
@@ -414,6 +513,14 @@
                 align-items: flex-start;
                 gap: 8px;
             }
+
+            .contact-box {
+                flex-direction: column;
+            }
+
+            .contact-text {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 600px) {
@@ -428,6 +535,10 @@
             .hero {
                 padding-top: 40px;
                 padding-bottom: 48px;
+            }
+
+            .quote-form {
+                max-width: 100%;
             }
         }
     </style>
@@ -911,13 +1022,108 @@
                     </div>
                 </div>
 
+                <!-- 여기부터 견적 요청 폼 추가 -->
                 <div class="contact-actions">
+                    <form id="quote-form" class="quote-form">
+                        <div class="quote-header">
+                            <div class="quote-title">당일/익일 화물 운송 견적요청</div>
+                            <div class="quote-subtitle">
+                                간단히 남겨 주시면 담당자가 바로 연락드립니다.
+                            </div>
+                        </div>
+
+                        <div class="quote-grid">
+                            <div class="quote-field">
+                                <label for="q-name">담당자 이름</label>
+                                <input
+                                    id="q-name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="홍길동"
+                                    required
+                                />
+                            </div>
+
+                            <div class="quote-field">
+                                <label for="q-phone">연락처</label>
+                                <input
+                                    id="q-phone"
+                                    name="phone"
+                                    type="tel"
+                                    placeholder="010-0000-0000"
+                                    required
+                                />
+                            </div>
+
+                            <div class="quote-field full">
+                                <label for="q-company">회사명 / 업종</label>
+                                <input
+                                    id="q-company"
+                                    name="company"
+                                    type="text"
+                                    placeholder="TS COMPANY / 제조·쇼핑몰·도소매 등"
+                                />
+                            </div>
+
+                            <div class="quote-field">
+                                <label for="q-from">출발지</label>
+                                <input
+                                    id="q-from"
+                                    name="from"
+                                    type="text"
+                                    placeholder="예) 경기 성남시 수정구"
+                                />
+                            </div>
+
+                            <div class="quote-field">
+                                <label for="q-to">도착지</label>
+                                <input
+                                    id="q-to"
+                                    name="to"
+                                    type="text"
+                                    placeholder="예) 부산 강서구 · 전국"
+                                />
+                            </div>
+
+                            <div class="quote-field full">
+                                <label for="q-item">화물 종류 / 중량</label>
+                                <input
+                                    id="q-item"
+                                    name="item"
+                                    type="text"
+                                    placeholder="예) 박스 10개 / 파렛트 2장 / 설비 부품 등"
+                                />
+                            </div>
+
+                            <div class="quote-field full">
+                                <label for="q-memo">요청 사항</label>
+                                <textarea
+                                    id="q-memo"
+                                    name="memo"
+                                    rows="3"
+                                    placeholder="희망 배차 시간, 반복 스케줄, 상·하차 환경 등을 적어 주세요."
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <p class="quote-notice">
+                            ※ 입력 내용은 견적 상담 용도로만 사용되며 제3자에게 제공되지 않습니다.
+                        </p>
+
+                        <button type="submit" class="quote-submit">
+                            견적 요청 보내기
+                        </button>
+                    </form>
+
+                    <!-- 필요하면 이 아래에 기존 전화/카톡 버튼도 다시 추가 가능 -->
+                    <!--
                     <a class="contact-btn main" href="tel:01097071541">
                         대표번호로 전화하기
                     </a>
                     <a class="contact-btn sub" href="https://pf.kakao.com/XXXXXXXX" target="_blank">
                         카카오톡 상담 열기
                     </a>
+                    -->
                 </div>
             </div>
         </div>
@@ -939,5 +1145,33 @@
         </div>
     </footer>
 
+    <!-- 견적 폼 전송 스크립트 (관리자 연동용 자리) -->
+    <script>
+        const quoteForm = document.getElementById('quote-form');
+
+        if (quoteForm) {
+            quoteForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(quoteForm);
+                const payload = Object.fromEntries(formData.entries());
+
+                try {
+                    // TODO: 실제 API 주소로 교체
+                    await fetch('https://YOUR_API_URL/quotes', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+
+                    alert('견적 요청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.');
+                    quoteForm.reset();
+                } catch (err) {
+                    console.error(err);
+                    alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
