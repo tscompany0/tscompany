@@ -1255,14 +1255,14 @@
           </div>
         </div>
 
-        <div class="contact-grid">
-          <div class="contact-form">
-            <form>
-              <div class="contact-form-grid">
-                <div class="form-field">
-                  <label for="company" class="form-label">회사명 / 상호 (개인일 경우 이름)</label>
-                  <input id="company" name="company" class="form-input" placeholder="예) TS COMPANY / 홍길동" />
-                </div>
+        <div class="contact-form">
+
+  <form id="contactForm">
+    <div class="contact-form-grid">
+      <div class="form-field">
+        <label for="company" class="form-label">회사명 / 상호 (개인일 경우 이름)</label>
+        <input id="company" name="company" class="form-input" placeholder="예) TS COMPANY / 홍길동" />
+      </div>
                 <div class="form-field">
                   <label for="name" class="form-label">담당자 이름</label>
                   <input id="name" name="name" class="form-input" placeholder="담당자 또는 의뢰인 성함" />
@@ -1863,5 +1863,32 @@
       updateButtons();
     })();
   </script>
+<script>
+ const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxnH0QsKZVAAKH3OOGt7KOuxLHtH-KRmdz4xSLQ4b_3X9JYJeEAEt2y7LiXREm9fbZxbA/exec';  // 이미 잘 쓰고 계신 그 URL
+
+document.getElementById('contactForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);   // 폼 전체를 그대로 보냄
+
+  try {
+    await fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors',   // ★ CORS 검사 안 하고 보냄
+      body: formData
+    });
+
+    // 응답(body)을 읽을 수 없지만, 시트에는 정상 저장됨
+    alert('접수가 완료되었습니다. 담당자가 순차적으로 연락드립니다.');
+    form.reset();
+
+  } catch (err) {
+    console.error(err);
+    // 이 경우는 진짜 네트워크 끊김 같은 진짜 오류일 때만 옴
+    alert('실제 네트워크 오류로 접수에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+  }
+});
+</script>
 </body>
 </html>
